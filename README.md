@@ -14,7 +14,34 @@
 - Allow the user to _sort_ the hogs based on **name** or **weight**
 
 - BONUS: Allow users to _hide_ hogs (not delete them, just hide them from view!)
-- BONUS: Add a form to allow users to _add_ new hogs to the page
+- BONUS: Add a form // Tile.js
+import React, { useState } from "react";
+
+const Tile = ({ hog }) => {
+    const [showDetails, setShowDetails] = useState(false);
+
+    const toggleDetails = () => {
+        setShowDetails(!showDetails);
+    };
+
+    return (
+        <div className="hog-tile" onClick={toggleDetails}>
+            <h3>{hog.name}</h3>
+            <img src={hog.image} alt={hog.name} />
+            {showDetails && (
+                <div className="hog-details">
+                    <p>Specialty: {hog.specialty}</p>
+                    <p>Weight: {hog.weight} lbs</p>
+                    <p>Greased: {hog.greased ? "Yes" : "No"}</p>
+                    <p>Highest Medal Achieved: {hog["highest medal achieved"]}</p>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Tile;
+to allow users to _add_ new hogs to the page
 - BONUS: Implement [Semantic Cards](https://semantic-ui.com/views/card.html) for
   each hog
 
